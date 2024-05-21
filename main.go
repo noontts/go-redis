@@ -10,18 +10,18 @@ import (
 )
 
 func main() {
-  db := initDatabase()
-  redis := initRedis()
-  productRepo := repositories.NewProductRepositoryRedis(db, redis)
+	db := initDatabase()
+	redis := initRedis()
+	productRepo := repositories.NewProductRepositoryRedis(db, redis)
 
-  products, err := productRepo.GetProduct()
+	products, err := productRepo.GetProduct()
 
-  if err != nil {
-    fmt.Println(err)
-    return
-  }
-  
-  fmt.Println(products)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(products)
 
 	// app := fiber.New()
 	//
@@ -38,15 +38,15 @@ func initDatabase() *gorm.DB {
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
-  if err != nil {
-    panic(err)
-  }
+	if err != nil {
+		panic(err)
+	}
 
-  return db
+	return db
 }
 
-func initRedis() *redis.Client{
-  return redis.NewClient(&redis.Options{
-    Addr: "localhost:6379",
-  })
+func initRedis() *redis.Client {
+	return redis.NewClient(&redis.Options{
+		Addr: "localhost:6379",
+	})
 }

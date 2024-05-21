@@ -48,7 +48,6 @@ func (r productRepositoryRedis) GetProduct() (products []product, err error) {
 		return nil, err
 	}
 
-  fmt.Println("Database")
+	fmt.Println("Database")
 	return products, nil
 }
-

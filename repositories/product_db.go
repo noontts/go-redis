@@ -2,9 +2,9 @@ package repositories
 
 import (
 	"fmt"
+	"gorm.io/gorm"
 	"math/rand"
 	"time"
-	"gorm.io/gorm"
 )
 
 type productRepositoryDB struct {
@@ -40,7 +40,7 @@ func mockData(db *gorm.DB) error {
 }
 
 func (r productRepositoryDB) GetProduct() (products []product, err error) {
-  err = r.db.Order("quatity desc").Limit(30).Find(&products).Error
+	err = r.db.Order("quatity desc").Limit(30).Find(&products).Error
 
-	return products, err 
+	return products, err
 }

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:4.0
+    container_name: go-my-redis 
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+  k6:
+    image: loadimpact/k6   
+    container_name: k6
+    volumes:
+      - ./scripts:/scripts
+      
+volumes:
+  redis_data:
+    driver: local

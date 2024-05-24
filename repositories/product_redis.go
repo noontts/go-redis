@@ -19,7 +19,7 @@ func NewProductRepositoryRedis(db *gorm.DB, redisClient *redis.Client) ProductRe
 	return productRepositoryRedis{db, redisClient}
 }
 
-func (r productRepositoryRedis) GetProduct() (products []product, err error) {
+func (r productRepositoryRedis) GetProducts() (products []product, err error) {
 	key := "repository::GetProducts"
 
 	//Redis Get

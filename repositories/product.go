@@ -7,5 +7,5 @@ type product struct {
 }
 
 type ProductRepository interface {
-	GetProduct() ([]product, error)
+	GetProducts() ([]product, error)
 }
